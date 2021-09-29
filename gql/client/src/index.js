@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(

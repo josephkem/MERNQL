@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { sendSignInLinkToEmail } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +21,9 @@ export const Register = () => {
     // console.log("result", result);
 
     //show notification
+    toast.success(
+      `Email is sent to ${email}, click link to complete registration`
+    );
 
     //save user email
     window.localStorage.setItem("emailFormRegistration", email);
