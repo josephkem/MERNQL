@@ -26,7 +26,7 @@ export const Register = () => {
     );
 
     //save user email
-    window.localStorage.setItem("emailFormRegistration", email);
+    window.localStorage.setItem("emailForRegistration", email);
 
     //clear email from the state
     setEmail("");
