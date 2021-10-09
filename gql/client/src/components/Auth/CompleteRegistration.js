@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
+import { signInWithEmailLink } from "firebase/auth";
 import { auth } from "../../firebase";
 
 function CompleteRegistration() {
@@ -15,8 +16,27 @@ function CompleteRegistration() {
     setEmail(window.localStorage.getItem("emailForRegistration"));
   }, [history]);
 
-  const handleSubmit = () => {
-    console.log("submit");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    //Validation
+    if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
+    try {
+      const result = await signInWithEmailLink(
+        auth,
+        email,
+        window.location.href
+      );
+      console.log(result);
+    } catch (error) {
+      console.log("Registration error", error.message);
+      setLoading(false);
+      toast.error(error.message);
+    }
   };
   return (
     <div className="container-p-5">
