@@ -42,7 +42,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route
           exact
-          path="/complete-registration"
+          path="/complete/registration"
           component={CompleteRegistration}
         />
       </Switch>
